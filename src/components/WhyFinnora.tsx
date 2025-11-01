@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function WhyFinnora() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#0D111A] to-[#151B28] overflow-hidden">
+    <section id="why" className="relative py-32 bg-gradient-to-b from-[#0D111A] to-[#151B28] overflow-hidden">
       <div className="absolute inset-0">
         {[...Array(20)].map((_, i) => (
           <motion.div

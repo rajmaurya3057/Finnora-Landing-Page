@@ -26,7 +26,7 @@ const highlights = [
 
 export default function Dashboard() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#151B28] to-[#0D111A] overflow-hidden">
+    <section id="dashboard" className="relative py-32 bg-gradient-to-b from-[#151B28] to-[#0D111A] overflow-hidden">
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-[150px]" />
       </div>

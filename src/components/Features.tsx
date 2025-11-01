@@ -34,7 +34,7 @@ const features = [
 
 export default function Features() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#0D111A] to-[#151B28] overflow-hidden">
+    <section id="features" className="relative py-32 bg-gradient-to-b from-[#0D111A] to-[#151B28] overflow-hidden">
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-cyan-500/20 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px]" />
