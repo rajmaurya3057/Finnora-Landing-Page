@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -14,19 +15,30 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = ["hero", "features", "dashboard", "why", "testimonials"];
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
-            break;
+      if (isHome) {
+        const sections = [
+          "hero",
+          "features",
+          "dashboard",
+          "why",
+          "testimonials",
+        ];
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+              setActiveSection(section);
+              break;
+            }
           }
         }
       }
@@ -34,15 +46,23 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHome]);
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
-    const targetId = href.replace("#", "");
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (!isHome) {
+      navigate("/");
     }
+    setTimeout(
+      () => {
+        const targetId = href.replace("#", "");
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      },
+      isHome ? 0 : 100
+    );
   };
 
   return (
@@ -63,23 +83,22 @@ export default function Navbar() {
                 : "bg-white/5 border border-white/10 rounded-2xl px-8 py-4 shadow-lg"
             } transition-all duration-300`}
           >
-            <motion.a
-              href="#hero"
-              onClick={() => handleNavClick("#hero")}
+            <motion.button
+              onClick={() => navigate("/")}
               className="flex items-center gap-3 cursor-pointer"
               whileHover={{ scale: 1.05 }}
             >
               <div className="relative">
                 <img
                   src="/WhatsApp Image 2025-11-01 at 11.28.35 AM.jpeg"
-                  alt="Finnora"
+                  alt="Fiinora"
                   className="w-8 h-8 md:w-10 md:h-10 rounded-lg"
                 />
               </div>
               <span className="hidden sm:inline text-lg md:text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Finnora
+                Fiinora
               </span>
-            </motion.a>
+            </motion.button>
 
             <ul className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => {
@@ -108,6 +127,7 @@ export default function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/login")}
                 className="hidden sm:inline px-4 md:px-6 py-2 text-gray-300 hover:text-white font-medium transition-colors duration-300"
               >
                 Login
@@ -116,6 +136,7 @@ export default function Navbar() {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => navigate("/signup")}
                 className="hidden sm:inline px-4 md:px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500 via-blue-500 to-blue-600 text-white font-semibold shadow-lg shadow-blue-500/50 hover:shadow-blue-500/70 transition-all duration-300"
               >
                 Sign Up
@@ -175,6 +196,10 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
+                    onClick={() => {
+                      setIsOpen(false);
+                      navigate("/login");
+                    }}
                     className="block w-full py-3 px-4 rounded-xl text-gray-300 hover:text-white hover:bg-white/10 font-medium transition-all duration-300"
                   >
                     Login
@@ -183,6 +208,10 @@ export default function Navbar() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6 }}
+                    onClick={() => {
+                      setIsOpen(false);
+                      navigate("/signup");
+                    }}
                     className="block w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold shadow-lg shadow-blue-500/50 transition-all duration-300"
                   >
                     Sign Up

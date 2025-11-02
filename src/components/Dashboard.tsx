@@ -1,32 +1,36 @@
-import { motion } from 'framer-motion';
-import { DollarSign, PieChart, TrendingUp, Bell } from 'lucide-react';
+import { motion } from "framer-motion";
+import { DollarSign, PieChart, TrendingUp, Bell } from "lucide-react";
 
 const highlights = [
   {
     icon: DollarSign,
-    title: 'Smart Expense Graphs',
-    description: 'Visualize where your money flows monthly.',
+    title: "Smart Expense Graphs",
+    description: "Visualize where your money flows monthly.",
   },
   {
     icon: PieChart,
-    title: 'Portfolio Overview',
-    description: 'Watch your stocks and mutual funds move dynamically.',
+    title: "Portfolio Overview",
+    description: "Watch your stocks and mutual funds move dynamically.",
   },
   {
     icon: Bell,
-    title: 'Insurance Reminders',
-    description: 'Never miss an EMI or premium again.',
+    title: "Insurance Reminders",
+    description: "Never miss an EMI or premium again.",
   },
   {
     icon: TrendingUp,
-    title: 'AI Insights',
-    description: 'Finnora learns your habits and suggests smarter saving paths.',
+    title: "AI Insights",
+    description:
+      "Fiinora learns your habits and suggests smarter saving paths.",
   },
 ];
 
 export default function Dashboard() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#151B28] to-[#0D111A] overflow-hidden">
+    <section
+      id="dashboard"
+      className="relative py-32 bg-gradient-to-b from-[#151B28] to-[#0D111A] overflow-hidden"
+    >
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded-full blur-[150px]" />
       </div>
@@ -42,13 +46,14 @@ export default function Dashboard() {
           >
             <div className="space-y-4">
               <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
-                See Your Finances{' '}
+                See Your Finances{" "}
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   Come Alive
                 </span>
               </h2>
               <p className="text-xl text-gray-300">
-                Finnora gives you a clear, interactive view of your expenses, investments, and goals — all in real time.
+                Fiinora gives you a clear, interactive view of your expenses,
+                investments, and goals — all in real time.
               </p>
             </div>
 
@@ -66,7 +71,9 @@ export default function Dashboard() {
                     <highlight.icon className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-white mb-1">{highlight.title}</h3>
+                    <h3 className="text-lg font-semibold text-white mb-1">
+                      {highlight.title}
+                    </h3>
                     <p className="text-gray-400">{highlight.description}</p>
                   </div>
                 </motion.div>
@@ -98,14 +105,16 @@ export default function Dashboard() {
                 <div className="space-y-6">
                   <div className="backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-white font-semibold">Total Balance</h3>
+                      <h3 className="text-white font-semibold">
+                        Total Balance
+                      </h3>
                       <span className="text-cyan-400 text-sm">+12.5%</span>
                     </div>
                     <p className="text-3xl font-bold text-white">$24,580.50</p>
                     <div className="mt-4 h-2 bg-gray-700 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
-                        whileInView={{ width: '65%' }}
+                        whileInView={{ width: "65%" }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: 0.5 }}
                         className="h-full bg-gradient-to-r from-cyan-400 to-blue-500"
@@ -136,12 +145,26 @@ export default function Dashboard() {
                   </div>
 
                   <div className="backdrop-blur-sm bg-white/5 rounded-2xl p-6 border border-white/10">
-                    <h4 className="text-white font-semibold mb-4">Investment Portfolio</h4>
+                    <h4 className="text-white font-semibold mb-4">
+                      Investment Portfolio
+                    </h4>
                     <div className="space-y-3">
                       {[
-                        { name: 'Stocks', value: 45, color: 'from-cyan-400 to-blue-500' },
-                        { name: 'Mutual Funds', value: 30, color: 'from-blue-500 to-indigo-500' },
-                        { name: 'Crypto', value: 25, color: 'from-indigo-500 to-violet-500' },
+                        {
+                          name: "Stocks",
+                          value: 45,
+                          color: "from-cyan-400 to-blue-500",
+                        },
+                        {
+                          name: "Mutual Funds",
+                          value: 30,
+                          color: "from-blue-500 to-indigo-500",
+                        },
+                        {
+                          name: "Crypto",
+                          value: 25,
+                          color: "from-indigo-500 to-violet-500",
+                        },
                       ].map((item, i) => (
                         <div key={i}>
                           <div className="flex justify-between text-sm mb-1">

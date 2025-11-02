@@ -1,20 +1,17 @@
-import Hero from './components/Hero';
-import Features from './components/Features';
-import Dashboard from './components/Dashboard';
-import WhyFinnora from './components/WhyFinnora';
-import Testimonials from './components/Testimonials';
-import CTA from './components/CTA';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#0A0D14] overflow-x-hidden">
-      <Hero />
-      <Features />
-      <Dashboard />
-      <WhyFinnora />
-      <Testimonials />
-      <CTA />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
   );
 }
 

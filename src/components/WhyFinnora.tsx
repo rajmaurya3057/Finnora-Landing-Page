@@ -1,8 +1,11 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 export default function WhyFinnora() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#0D111A] to-[#151B28] overflow-hidden">
+    <section
+      id="why"
+      className="relative py-32 bg-gradient-to-b from-[#0D111A] to-[#151B28] overflow-hidden"
+    >
       <div className="absolute inset-0">
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -37,9 +40,9 @@ export default function WhyFinnora() {
           >
             <div className="space-y-6">
               <h2 className="text-5xl lg:text-6xl font-bold text-white">
-                Why{' '}
+                Why{" "}
                 <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  Finnora?
+                  Fiinora?
                 </span>
               </h2>
 
@@ -56,8 +59,10 @@ export default function WhyFinnora() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  No clutter. No confusion.{' '}
-                  <span className="text-cyan-400 font-semibold">Just clarity.</span>
+                  No clutter. No confusion.{" "}
+                  <span className="text-cyan-400 font-semibold">
+                    Just clarity.
+                  </span>
                 </motion.p>
 
                 <motion.p
@@ -66,8 +71,10 @@ export default function WhyFinnora() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.5 }}
                 >
-                  Built to help you understand{' '}
-                  <span className="text-blue-400 font-semibold">where your money goes.</span>
+                  Built to help you understand{" "}
+                  <span className="text-blue-400 font-semibold">
+                    where your money goes.
+                  </span>
                 </motion.p>
 
                 <motion.p
@@ -76,8 +83,10 @@ export default function WhyFinnora() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.7 }}
                 >
-                  Designed for humans.{' '}
-                  <span className="text-cyan-400 font-semibold">Powered by intelligence.</span>
+                  Designed for humans.{" "}
+                  <span className="text-cyan-400 font-semibold">
+                    Powered by intelligence.
+                  </span>
                 </motion.p>
               </motion.div>
             </div>
@@ -106,9 +115,11 @@ export default function WhyFinnora() {
                     <div
                       className="absolute w-3 h-3 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
                       style={{
-                        top: '50%',
-                        left: '50%',
-                        transform: `translate(-50%, -50%) translateY(-${80 + i * 20}px)`,
+                        top: "50%",
+                        left: "50%",
+                        transform: `translate(-50%, -50%) translateY(-${
+                          80 + i * 20
+                        }px)`,
                       }}
                     />
                   </motion.div>

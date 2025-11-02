@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowRight, Play } from "lucide-react";
 
 export default function CTA() {
   return (
@@ -71,9 +71,9 @@ export default function CTA() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-5xl lg:text-6xl font-bold text-white leading-tight"
             >
-              Take control of your money,{' '}
+              Take control of your money,{" "}
               <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500 bg-clip-text text-transparent">
-                the Finnora way
+                the Fiinora way
               </span>
             </motion.h2>
 
@@ -121,7 +121,7 @@ export default function CTA() {
             transition={{ duration: 0.6, delay: 0.8 }}
             className="pt-12 text-gray-500 text-sm"
           >
-            <p>© 2025 Finnora. Designed with precision.</p>
+            <p>© 2025 Fiinora. Designed with precision.</p>
           </motion.div>
         </motion.div>
       </div>

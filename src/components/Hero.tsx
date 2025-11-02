@@ -20,14 +20,6 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="inline-block">
-              <img
-                src="/WhatsApp Image 2025-11-01 at 11.28.35 AM.jpeg"
-                alt="Finnora Logo"
-                className="h-16 w-16 rounded-xl"
-              />
-            </div>
-
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
                 Smarter Money Management for the{" "}
