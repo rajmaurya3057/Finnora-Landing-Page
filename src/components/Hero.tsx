@@ -1,9 +1,12 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Play } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowRight, Play } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A0D14] via-[#151B28] to-[#0D111A]">
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0A0D14] via-[#151B28] to-[#0D111A]"
+    >
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px]" />
@@ -27,14 +30,15 @@ export default function Hero() {
 
             <div className="space-y-4">
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
-                Smarter Money Management for the{' '}
+                Smarter Money Management for the{" "}
                 <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">
                   Modern You
                 </span>
               </h1>
 
               <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed">
-                Track expenses, monitor investments, and stay in control — all in one intuitive dashboard.
+                Track expenses, monitor investments, and stay in control — all
+                in one intuitive dashboard.
               </p>
             </div>
 
