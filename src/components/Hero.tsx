@@ -1,7 +1,61 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 
+const CoinContent = () => (
+  <svg viewBox="0 0 200 200" className="w-full h-full">
+    <defs>
+      <linearGradient id="coinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#06b6d4" />
+        <stop offset="50%" stopColor="#0ea5e9" />
+        <stop offset="100%" stopColor="#0284c7" />
+      </linearGradient>
+      <radialGradient id="coinShine" cx="30%" cy="30%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+        <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+      </radialGradient>
+    </defs>
+
+    <circle cx="100" cy="100" r="95" fill="url(#coinGradient)" stroke="#0369a1" strokeWidth="2" />
+
+    <circle cx="100" cy="100" r="85" fill="url(#coinShine)" opacity="0.6" />
+
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.3" />
+
+    <text x="100" y="120" fontSize="80" fontWeight="bold" fill="#ffffff" textAnchor="middle" opacity="0.9">
+      $
+    </text>
+
+    <circle cx="70" cy="70" r="8" fill="#ffffff" opacity="0.4" />
+    <circle cx="130" cy="130" r="5" fill="#ffffff" opacity="0.2" />
+  </svg>
+);
+
 export default function Hero() {
+  const contentVariants = {
+    hidden: { opacity: 0, x: -60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const coinVariants = {
+    hidden: { opacity: 0, x: 60 },
+    visible: (flip: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: flip === 0 ? 0 : 0.3,
+      },
+    }),
+  };
+
   return (
     <section
       id="hero"
@@ -15,9 +69,9 @@ export default function Hero() {
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={contentVariants}
+            initial="hidden"
+            animate="visible"
             className="space-y-8"
           >
             <div className="space-y-4">
@@ -56,41 +110,144 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            custom={0}
+            variants={coinVariants}
+            initial="hidden"
+            animate="visible"
             className="relative hidden lg:block"
           >
-            <div className="relative w-full h-[600px] flex items-center justify-center">
+            <div className="relative w-full h-[600px] flex items-center justify-center perspective">
               <motion.div
+                style={{ perspective: 1200 }}
                 animate={{
-                  rotateY: [0, 360],
-                  rotateZ: [0, 15, 0, -15, 0],
+                  rotateY: [0, 180, 360],
+                  y: [0, -80, 0],
+                  rotateZ: [0, 5, -5, 0],
                 }}
                 transition={{
-                  duration: 8,
+                  duration: 4,
                   repeat: Infinity,
-                  ease: "linear",
+                  repeatDelay: 3,
+                  ease: "easeInOut",
+                  times: [0, 0.5, 1],
                 }}
-                className="relative"
+                className="relative w-80 h-80"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-600 rounded-full blur-3xl opacity-50" />
-                <div className="relative w-80 h-80 rounded-full bg-gradient-to-br from-cyan-400/90 via-blue-500/90 to-blue-600/90 flex items-center justify-center shadow-2xl">
-                  <div className="text-8xl font-bold text-white/90">$</div>
-                </div>
+                <motion.div
+                  animate={{
+                    boxShadow: [
+                      "0 20px 60px rgba(6, 182, 212, 0.3)",
+                      "0 40px 80px rgba(6, 182, 212, 0.5)",
+                      "0 20px 60px rgba(6, 182, 212, 0.3)",
+                    ],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                    ease: "easeInOut",
+                  }}
+                  className="relative w-full h-full"
+                >
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-blue-600/30 blur-3xl" />
+
+                  <motion.div
+                    animate={{
+                      rotateX: [0, 180, 360],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: "easeInOut",
+                      times: [0, 0.5, 1],
+                    }}
+                    style={{
+                      transformStyle: "preserve-3d" as const,
+                    }}
+                    className="relative w-full h-full rounded-full overflow-hidden"
+                  >
+                    <div
+                      style={{
+                        backfaceVisibility: "hidden",
+                      }}
+                      className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-cyan-300 to-blue-500 rounded-full flex items-center justify-center"
+                    >
+                      <CoinContent />
+                    </div>
+
+                    <div
+                      style={{
+                        backfaceVisibility: "hidden",
+                        transform: "rotateX(180deg)",
+                      }}
+                      className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 rounded-full flex items-center justify-center"
+                    >
+                      <svg viewBox="0 0 200 200" className="w-full h-full">
+                        <defs>
+                          <linearGradient
+                            id="coinGradientBack"
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="100%"
+                          >
+                            <stop offset="0%" stopColor="#1e40af" />
+                            <stop offset="50%" stopColor="#0284c7" />
+                            <stop offset="100%" stopColor="#06b6d4" />
+                          </linearGradient>
+                        </defs>
+                        <circle
+                          cx="100"
+                          cy="100"
+                          r="95"
+                          fill="url(#coinGradientBack)"
+                          stroke="#0369a1"
+                          strokeWidth="2"
+                        />
+                        <text
+                          x="100"
+                          y="115"
+                          fontSize="60"
+                          fontWeight="bold"
+                          fill="#ffffff"
+                          textAnchor="middle"
+                          opacity="0.9"
+                        >
+                          F
+                        </text>
+                      </svg>
+                    </div>
+                  </motion.div>
+                </motion.div>
               </motion.div>
 
               <motion.div
                 animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.3, 0.6, 0.3],
+                  scale: [1, 1.3, 1],
+                  opacity: [0.2, 0.4, 0.2],
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 4,
                   repeat: Infinity,
+                  repeatDelay: 3,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 rounded-full border-2 border-cyan-400/30"
+                className="absolute inset-0 rounded-full border-2 border-cyan-400/40"
+              />
+
+              <motion.div
+                animate={{
+                  scale: [1, 1.5, 1],
+                  opacity: [0, 0.3, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatDelay: 3,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 rounded-full border border-blue-400/20"
               />
             </div>
           </motion.div>
