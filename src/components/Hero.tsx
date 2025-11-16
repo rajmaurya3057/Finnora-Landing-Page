@@ -5,28 +5,44 @@ const CoinContent = () => (
   <svg viewBox="0 0 200 200" className="w-full h-full">
     <defs>
       <linearGradient id="coinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#06b6d4" />
-        <stop offset="50%" stopColor="#0ea5e9" />
-        <stop offset="100%" stopColor="#0284c7" />
+        <stop offset="0%" stopColor="#a78bfa" />
+        <stop offset="50%" stopColor="#c4b5fd" />
+        <stop offset="100%" stopColor="#8b5cf6" />
       </linearGradient>
-      <radialGradient id="coinShine" cx="30%" cy="30%">
-        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+      <radialGradient id="coinShine" cx="35%" cy="35%">
+        <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+        <stop offset="60%" stopColor="#e9d5ff" stopOpacity="0.3" />
         <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
       </radialGradient>
+      <linearGradient id="rimGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stopColor="#7c3aed" opacity="0.8" />
+        <stop offset="50%" stopColor="#6d28d9" opacity="0.6" />
+        <stop offset="100%" stopColor="#5b21b6" opacity="0.8" />
+      </linearGradient>
     </defs>
 
-    <circle cx="100" cy="100" r="95" fill="url(#coinGradient)" stroke="#0369a1" strokeWidth="2" />
+    <circle cx="100" cy="100" r="95" fill="url(#coinGradient)" stroke="#6d28d9" strokeWidth="3" />
 
-    <circle cx="100" cy="100" r="85" fill="url(#coinShine)" opacity="0.6" />
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#7c3aed" strokeWidth="1.5" opacity="0.6" />
 
-    <circle cx="100" cy="100" r="80" fill="none" stroke="#ffffff" strokeWidth="1" opacity="0.3" />
+    <circle cx="100" cy="100" r="85" fill="url(#coinShine)" opacity="0.7" />
 
-    <text x="100" y="120" fontSize="80" fontWeight="bold" fill="#ffffff" textAnchor="middle" opacity="0.9">
-      $
-    </text>
+    <g opacity="0.4">
+      <line x1="100" y1="40" x2="100" y2="50" stroke="#7c3aed" strokeWidth="2" />
+      <line x1="100" y1="150" x2="100" y2="160" stroke="#7c3aed" strokeWidth="2" />
+      <line x1="40" y1="100" x2="50" y2="100" stroke="#7c3aed" strokeWidth="2" />
+      <line x1="150" y1="100" x2="160" y2="100" stroke="#7c3aed" strokeWidth="2" />
 
-    <circle cx="70" cy="70" r="8" fill="#ffffff" opacity="0.4" />
-    <circle cx="130" cy="130" r="5" fill="#ffffff" opacity="0.2" />
+      <line x1="60" y1="60" x2="68" y2="68" stroke="#7c3aed" strokeWidth="1.5" />
+      <line x1="140" y1="140" x2="132" y2="132" stroke="#7c3aed" strokeWidth="1.5" />
+    </g>
+
+    <path d="M 100 60 Q 110 90 100 130 Q 90 90 100 60" fill="none" stroke="#a78bfa" strokeWidth="3" opacity="0.6" />
+    <path d="M 70 100 Q 100 110 130 100" fill="none" stroke="#a78bfa" strokeWidth="2" opacity="0.5" />
+
+    <circle cx="75" cy="75" r="4" fill="#e9d5ff" opacity="0.7" />
+    <circle cx="125" cy="125" r="3" fill="#ddd6fe" opacity="0.6" />
+    <circle cx="100" cy="85" r="2.5" fill="#c4b5fd" opacity="0.8" />
   </svg>
 );
 
@@ -136,9 +152,9 @@ export default function Hero() {
                 <motion.div
                   animate={{
                     boxShadow: [
-                      "0 20px 60px rgba(6, 182, 212, 0.3)",
-                      "0 40px 80px rgba(6, 182, 212, 0.5)",
-                      "0 20px 60px rgba(6, 182, 212, 0.3)",
+                      "0 20px 60px rgba(147, 51, 234, 0.4)",
+                      "0 40px 100px rgba(147, 51, 234, 0.6)",
+                      "0 20px 60px rgba(147, 51, 234, 0.4)",
                     ],
                   }}
                   transition={{
@@ -149,7 +165,7 @@ export default function Hero() {
                   }}
                   className="relative w-full h-full"
                 >
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cyan-400/30 via-blue-500/20 to-blue-600/30 blur-3xl" />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/40 via-purple-400/20 to-purple-600/30 blur-3xl" />
 
                   <motion.div
                     animate={{
@@ -181,7 +197,7 @@ export default function Hero() {
                         backfaceVisibility: "hidden",
                         transform: "rotateX(180deg)",
                       }}
-                      className="absolute inset-0 bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400 rounded-full flex items-center justify-center"
+                      className="absolute inset-0 bg-gradient-to-br from-purple-500 via-purple-400 to-purple-600 rounded-full flex items-center justify-center"
                     >
                       <svg viewBox="0 0 200 200" className="w-full h-full">
                         <defs>
@@ -192,27 +208,40 @@ export default function Hero() {
                             x2="100%"
                             y2="100%"
                           >
-                            <stop offset="0%" stopColor="#1e40af" />
-                            <stop offset="50%" stopColor="#0284c7" />
-                            <stop offset="100%" stopColor="#06b6d4" />
+                            <stop offset="0%" stopColor="#9333ea" />
+                            <stop offset="50%" stopColor="#a855f7" />
+                            <stop offset="100%" stopColor="#7c3aed" />
                           </linearGradient>
+                          <radialGradient id="coinShineBack" cx="35%" cy="35%">
+                            <stop offset="0%" stopColor="#ffffff" stopOpacity="0.85" />
+                            <stop offset="60%" stopColor="#e9d5ff" stopOpacity="0.2" />
+                            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
+                          </radialGradient>
                         </defs>
                         <circle
                           cx="100"
                           cy="100"
                           r="95"
                           fill="url(#coinGradientBack)"
-                          stroke="#0369a1"
-                          strokeWidth="2"
+                          stroke="#6d28d9"
+                          strokeWidth="3"
                         />
+                        <circle cx="100" cy="100" r="85" fill="url(#coinShineBack)" opacity="0.6" />
+
+                        <g opacity="0.3">
+                          <circle cx="70" cy="60" r="8" fill="none" stroke="#c4b5fd" strokeWidth="2" />
+                          <circle cx="130" cy="140" r="6" fill="none" stroke="#c4b5fd" strokeWidth="1.5" />
+                          <path d="M 60 100 L 140 100" stroke="#a78bfa" strokeWidth="2" />
+                        </g>
+
                         <text
                           x="100"
                           y="115"
-                          fontSize="60"
+                          fontSize="70"
                           fontWeight="bold"
                           fill="#ffffff"
                           textAnchor="middle"
-                          opacity="0.9"
+                          opacity="0.85"
                         >
                           F
                         </text>
@@ -225,7 +254,7 @@ export default function Hero() {
               <motion.div
                 animate={{
                   scale: [1, 1.3, 1],
-                  opacity: [0.2, 0.4, 0.2],
+                  opacity: [0.25, 0.5, 0.25],
                 }}
                 transition={{
                   duration: 4,
@@ -233,13 +262,13 @@ export default function Hero() {
                   repeatDelay: 3,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 rounded-full border-2 border-cyan-400/40"
+                className="absolute inset-0 rounded-full border-2 border-purple-400/50"
               />
 
               <motion.div
                 animate={{
                   scale: [1, 1.5, 1],
-                  opacity: [0, 0.3, 0],
+                  opacity: [0, 0.4, 0],
                 }}
                 transition={{
                   duration: 4,
@@ -247,7 +276,7 @@ export default function Hero() {
                   repeatDelay: 3,
                   ease: "easeInOut",
                 }}
-                className="absolute inset-0 rounded-full border border-blue-400/20"
+                className="absolute inset-0 rounded-full border border-purple-500/30"
               />
             </div>
           </motion.div>
